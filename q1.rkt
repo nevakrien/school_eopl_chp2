@@ -3,17 +3,18 @@
 
 ;2d vector
 (define-datatype vector vector?
+  ;constructor
   (vec
    (x number?)
    (y number?)))
 
-;simple constructors
-
+;constructor
 ;create-vec: float x float -> vec
 ;(x,y) -> vec(x,y)
 (define (create-vec x y)
   (vec x y))
 
+;constructor
 ;zero-vec: () -> vec
 ; () -> vec(0,0)
 (define (zero-vec)
@@ -35,6 +36,7 @@
     [vec (x y)
      (atan y x)]))
 
+;observer
 ;PRINTS the vec in polar form
 ;polar-vec: vec -> !print
 ;print atan(y/x) and sqrt(x*x+y*y)
@@ -46,6 +48,7 @@
 
 ;(polar-vec (create-vec 1 1))
 
+;constructor
 ;add v2 and v1
 ;add-vec: vec x vec -> vec
 ;vec(x1,y1) vec(x2,y2) -> vec(x1+x2,y1+y2) 
@@ -64,6 +67,7 @@
 ;(display (add-vec (vec 1 1) (vec 1 -1)))
 (equal?? (vec 2 0) (add-vec (vec 1 1) (vec 1 -1)))
 
+;constructor
 ;subtract v2 from v1
 ;sub-vec vec x vec -> vec
 ;vec(x1,y1) vec(x2,y2) -> vec(x1-x2,y1-y2) 
@@ -80,6 +84,7 @@
 
 (equal?? (vec 1 1) (sub-vec (vec 2 0) (vec 1 -1)))
 
+;observer
 ;returns the quadrent in the cartesian plane the vector is at
 ;quad-vec: vec -> int
 ;v -> quadrent(v)
@@ -94,9 +99,9 @@
 
 ;(vec-length (sub-vec (vec 1 1) (vec 2 2)))
 
+;observer
 ;checks if 2 vectors are exact negations of 1 another
 ;is-neg?: vec x vec -> bool
-
 ;vec(x,y) vec(-x,-y) -> true
 ; otherwise false
 (define (is-neg? v1 v2)
